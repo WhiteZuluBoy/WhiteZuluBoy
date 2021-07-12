@@ -9,17 +9,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER TABLE [dbo].[Functions] DROP CONSTRAINT [FK_Functions_ApplicationStates1]
+ALTER TABLE [dbo].[Functions] DROP CONSTRAINT [FK_Functions_ApplicationStates]
 GO
 
 
-ALTER TABLE [dbo].[Functions] DROP CONSTRAINT [FK_Functions_ApplicationTasks]
+ALTER TABLE [dbo].[Functions] DROP CONSTRAINT [FK_Functions_Tasks]
 GO
 
-ALTER TABLE [dbo].[ApplicationTasks] DROP CONSTRAINT [FK_ApplicationTasks_Applications]
+ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Tasks_Applications]
 GO
 
-ALTER TABLE [dbo].[ApplicationTasks] DROP CONSTRAINT [FK_ApplicationTasks_ApplicationStates1]
+ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Tasks_ApplicationStates1]
 GO
 
 ALTER TABLE [dbo].[Applications] DROP CONSTRAINT [FK_Applications_ApplicationStates]
