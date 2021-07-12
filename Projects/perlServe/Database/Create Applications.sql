@@ -19,7 +19,7 @@ GO
 ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Tasks_Applications]
 GO
 
-ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Tasks_ApplicationStates1]
+ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Tasks_ApplicationStates]
 GO
 
 ALTER TABLE [dbo].[Applications] DROP CONSTRAINT [FK_Applications_ApplicationStates]
