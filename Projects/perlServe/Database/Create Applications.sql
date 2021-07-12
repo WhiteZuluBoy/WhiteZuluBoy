@@ -80,16 +80,7 @@ CREATE TABLE [dbo].[Applications](
 ) ON [PRIMARY]
 GO
 
-
-USE [perl]
-GO
-
 /****** Object:  Table [dbo].[ApplicationTasks]    Script Date: 2021/07/12 01:16:48 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [dbo].[Tasks](
 	[TaskId] [uniqueidentifier] NOT NULL,
@@ -104,18 +95,7 @@ CREATE TABLE [dbo].[Tasks](
 ) ON [PRIMARY]
 GO
 
-
-
-
-USE [perl]
-GO
-
 /****** Object:  Table [dbo].[Functions]    Script Date: 2021/07/12 01:18:44 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [dbo].[Functions](
 	[FunctionId] [uniqueidentifier] NOT NULL,
@@ -139,6 +119,34 @@ REFERENCES [dbo].[ApplicationStates] ([ApplicationStateId])
 GO
 
 ALTER TABLE [dbo].[Applications] CHECK CONSTRAINT [FK_Applications_ApplicationStates]
+GO
+
+ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [FK_Tasks_Applications] FOREIGN KEY([pApplication])
+REFERENCES [dbo].[Applications] ([ApplicationId])
+GO
+
+ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [FK_Tasks_Applications]
+GO
+
+ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [FK_Tasks_ApplicationStates] FOREIGN KEY([pTaskState])
+REFERENCES [dbo].[ApplicationStates] ([ApplicationStateId])
+GO
+
+ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [FK_Tasks_ApplicationStates]
+GO
+
+ALTER TABLE [dbo].[Functions]  WITH CHECK ADD  CONSTRAINT [FK_Functions_Tasks] FOREIGN KEY([pTask])
+REFERENCES [dbo].[Tasks] ([TaskId])
+GO
+
+ALTER TABLE [dbo].[Functions] CHECK CONSTRAINT [FK_Functions_Tasks]
+GO
+
+ALTER TABLE [dbo].[Functions]  WITH CHECK ADD  CONSTRAINT [FK_Functions_ApplicationStates] FOREIGN KEY([pFunctionState])
+REFERENCES [dbo].[ApplicationStates] ([ApplicationStateId])
+GO
+
+ALTER TABLE [dbo].[Functions] CHECK CONSTRAINT [FK_Functions_ApplicationStates]
 GO
 
 
